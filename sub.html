@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Subscription Packs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .subscription-pack {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .subscription-pack h3 {
+            margin-top: 0;
+        }
+        .subscription-pack p {
+            margin: 10px 0;
+        }
+        .subscription-pack .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .subscription-pack .subscribe-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .subscription-pack .subscribe-btn:hover {
+            background-color: #0056b3;
+        }
+        .subscription-pack img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Monthly Subscription Packs</h2>
+        <div class="subscription-pack">
+            <img src="basic_plan_image.jpg" alt="Basic Plan Image">
+            <div>
+                <h3>Basic Plan</h3>
+                <p>Access to 100 job listings</p>
+                <p>Standard support</p>
+            </div>
+            <div class="price">$10/month</div>
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+        <div class="subscription-pack">
+            <img src="standard_plan_image.jpg" alt="Standard Plan Image">
+            <div>
+                <h3>Standard Plan</h3>
+                <p>Access to 500 job listings</p>
+                <p>Premium support</p>
+            </div>
+            <div class="price">$20/month</div>
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+        <div class="subscription-pack">
+            <img src="premium_plan_image.jpg" alt="Premium Plan Image">
+            <div>
+                <h3>Premium Plan</h3>
+                <p>Access to unlimited job listings</p>
+                <p>VIP support</p>
+            </div>
+            <div class="price">$30/month</div>
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+    </div>
+</body>
+</html>

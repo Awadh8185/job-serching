@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto+Slab&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/Styles/style.css">
+  <link rel="stylesheet" href="/Styles/slider.css">
+  <title>Document</title>
+  <title>Company Search</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+#searchInput {
+  padding: 10px;
+  margin-top: 10px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#companyContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.company {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.company img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.company:hover {
+  background-color: #f0f0f0;
+}
+
+  </style>
+</head>
+<body>
+    <div id="navbar">
+        <div class="left-nav">
+            <a href="index.html" target="_blank">
+                <img src="newlogouu.png">
+            </a>
+        </div>
+        <div class="middle-nav">
+            <div><a href="JobPage1.html">Jobs</a></div>
+            <div><a href="PROTAL.html">Companies</a></div>
+            <div><a href="servises.html">Services</a></div>
+            <div><a href="#">Resources</a></div>
+        </div>
+        <div class="right-nav">
+            <a href="login.html"><button class="loginbtn">Login</button></a>
+            <a href="register.html"><button class="registerbtn">Register</button></a>
+            <div id="pipe"></div>
+            <div id="emp">For employers</div><span class="drpdwn"></span>
+        </div>
+
+    </div>
+  <header>
+    <h1>COMPANIES</h1>
+    <input type="text" id="searchInput" placeholder="Search companies...">
+  </header>
+  <main id="companyContainer">
+    <!-- Company logos will be dynamically added here -->
+  </main>
+
+  <script>
+    // Sample company data
+const companies = [
+  { name: "HCL TECH", logo: "https://www.hcltech.com/themes/custom/hcltech/images/hcltech-new-logo.svg", page: "https://www.hcltech.com/careers/opportunities" },
+  { name: "GOOGLE", logo: "https://th.bing.com/th/id/OIP.Fztvtcfaee6LT61FPPVZuwHaCg?w=320&h=118&c=7&r=0&o=5&dpr=1.3&pid=1.7", page: "https://www.google.com/about/careers/applications/" },
+  { name: "MICROSOFT", logo: "https://th.bing.com/th/id/OIP.uHrDUCEbFVxRTdSSRjC5_gHaCu?w=302&h=128&c=7&r=0&o=5&dpr=1.3&pid=1.7", page: "https://careers.microsoft.com/v2/global/en/home.html" },
+  { name: "META", logo: "https://static.vecteezy.com/system/resources/previews/004/263/114/original/meta-logo-meta-by-facebook-icon-editorial-logo-for-social-media-free-vector.jpg", page: "https://www.metacareers.com/" },
+  { name: "NETFLIX", logo: "https://th.bing.com/th/id/OIP.VlEUeWTLc_YFCJtH30_nDwHaHa?pid=ImgDet&w=184&h=184&c=7&dpr=1.3", page: "https://www.bing.com/ck/a?!&&p=bff65a3204a4491fJmltdHM9MTcxMjg4MDAwMCZpZ3VpZD0xMzA5Mzc2Zi0wZWM3LTYyMzAtMDc5MS0yNTU2MGY3NTYzZTQmaW5zaWQ9NTIyMQ&ptn=3&ver=2&hsh=3&fclid=1309376f-0ec7-6230-0791-25560f7563e4&psq=NETLIX+CAREER+PAGE&u=a1aHR0cHM6Ly9qb2JzLm5ldGZsaXguY29tLw&ntb=1" },
+,
+];
+
+const companyContainer = document.getElementById('companyContainer');
+const searchInput = document.getElementById('searchInput');
+
+// Function to create company boxes
+function createCompanyBox(company) {
+  const companyBox = document.createElement('div');
+  companyBox.classList.add('company');
+  companyBox.innerHTML = `
+    <img src="${company.logo}" alt="${company.name} logo">
+    <p>${company.name}</p>
+  `;
+  companyBox.addEventListener('click', () => {
+    window.location.href = company.page;
+  });
+  companyContainer.appendChild(companyBox);
+}
+
+// Function to render company boxes
+function renderCompanies(filteredCompanies) {
+  // Clear previous companies
+  companyContainer.innerHTML = '';
+  // Render filtered companies or all companies if no filter applied
+  (filteredCompanies || companies).forEach(company => {
+    createCompanyBox(company);
+  });
+}
+
+// Function to filter companies based on search input
+function filterCompanies(searchTerm) {
+  const filteredCompanies = companies.filter(company =>
+    company.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  renderCompanies(filteredCompanies);
+}
+
+// Event listener for search input
+searchInput.addEventListener('input', () => {
+  filterCompanies(searchInput.value);
+});
+
+// Initial render
+renderCompanies();
+
+
+  </script>
+</body>
+</html>
